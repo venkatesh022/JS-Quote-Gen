@@ -51,3 +51,18 @@ function getQuote(){
 }
 
 document.getElementById("getQuote").onclick = getQuote;
+
+//////////////////// FETCH-API Method ///////////////////
+
+let quoteElem = document.getElementById("quote");
+let authorElem = document.getElementById("author")
+
+document.getElementById("getQuote").onclick = quoteAPI;
+
+async function quoteAPI(){
+    let response = await fetch("https://api.quotable.io/random")
+    let quote = await response.json()
+
+    quoteElem.innerText = quote.content;
+    authorElem.innerText = "--" + " " + quote.author
+}
